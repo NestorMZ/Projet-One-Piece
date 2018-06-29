@@ -1,5 +1,6 @@
-#include "Carte.h"
 #include <iostream>
+#include "Carte.h"
+//#include "Joueur.h"
 
 using namespace std;
 
@@ -10,7 +11,7 @@ Carte::Carte() : valeur(1), famille(0)
 
 Carte::Carte(int val, int fam) : valeur(val), famille(fam)
 {
-	//Le constructeur initialise la carte en As de Coeur
+	//Le constructeur initialise la carte avec les parametres rentres
 }
 
 int Carte::estRouge() const
@@ -56,6 +57,11 @@ void Carte::affiche() const
 	else if(famille==2){fam = "Carreau";}
 	else{fam = "Trefle";}
 	
+	if(valeur == 1){
+		cout << "As de " << fam << endl;
+		return;
+	}
+
 	if(valeur < 11){
 		cout << valeur << " de " << fam << endl;
 		return;

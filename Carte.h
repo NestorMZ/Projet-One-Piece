@@ -18,7 +18,7 @@ class Carte
 	void setFam(int fam);
 	int estUneTete() const;
 	void affiche() const;
-	//TODO : si d'autres idées tu peux completer...
+	//TODO : si d'autres idées, completer...
 	
 	private:
 	
