@@ -1,6 +1,5 @@
 #include <iostream>
 #include "Carte.h"
-//#include "Joueur.h"
 
 using namespace std;
 

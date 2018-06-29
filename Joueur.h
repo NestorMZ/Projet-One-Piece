@@ -6,8 +6,6 @@ typedef struct Noeud {
 	Noeud* p_suivante;
 } Noeud, *PtNoeud, *Liste;
 
-//typedef Noeud* Liste;
-
 class Joueur
 {
 	public:
@@ -15,6 +13,7 @@ class Joueur
 	Joueur();
 	Joueur(std::string nom);
 	Joueur(std::string nom,Liste cartes);
+	~Joueur(); //Destructeur qui libère la mémoire allouée par les cartes et les noeuds en main
 
 	//Methodes
 	std::string getName() const; //retourne le nom du joueur
@@ -24,7 +23,7 @@ class Joueur
 	void dammages(); //enleve aux points de vie du joueur la valeur de sa main
 	void contreDumbal();//enleve aux points de vie du joueur 35 + la valeur de sa main
 	void piocher(std::vector<Carte*>& Pile);//piocher une carte sur le dessus du jeu (dernier indice du tableau), la rajoute a son jeu et l'enleve du paquet
-	void afficher_main() const;
+	void afficher_main() const;//affiche chaque carte présente dans la main du joueur en utilisant la methode affiche() de la classe Carte
 
 	private:
 	//Attributs

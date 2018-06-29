@@ -35,18 +35,28 @@ On utilisera par la suite des pointeurs vers nos cartes pour optimiser la mémoi
 #### La Pioche et le Tas
 Pour la pioche et pour le tas nous avons besoin de mélanger et de connaître la carte la plus haute.
 On utilisera si il existe le type `Stack` auquel on ajoutera un entier contenant le nombre de cartes de la pioche.
+Pour la pioche, on utilisera une classe deja existante, la classe `vector`.
 On créera une structure `Noeud`:
 ~~~
 Noeud {
-          Carte* carte;
-          Carte* suivante;
-          }
+    Carte* carte;
+    Carte* suivante;
+}
 ~~~ 
 
 #### Le Joueur
-Nos joueurs seront représenter par une classe contenant des methodes et une liste chaînée de cartes.
+Nos joueurs seront représentés par une classe de la forme :
+~~~
+Joueur {
+	string name;
+	int points_vie; 
+	Liste liste_cartes; //cette liste correspondra aux cartes que le joueur a dans sa main
 
-Idées pour les méthodes : quoi jouer, dumbal, piocher tas/pioche, ordonner (Bonus).
+	//Puis les méthodes
+}
+~~~
+Idées pour les méthodes : quoi jouer, dumbal, piocher tas/pioche, dammages, contre Dumbal, ordonner (Bonus).
+
 
 ## VERSION 1.0
 

@@ -21,6 +21,18 @@ Joueur::Joueur(std::string nom,Liste cartes) : name(nom), points_vie(100), liste
 
 }
 
+//destructeur
+Joueur::~Joueur()
+{
+	Noeud* temp = liste_cartes;
+	while(liste_cartes!=NULL){
+		liste_cartes = liste_cartes->p_suivante;
+		delete temp->p_maCarte;
+		delete temp;
+		temp = liste_cartes;
+	}
+}
+
 std::string Joueur::getName() const
 {
 	return name;
