@@ -20,6 +20,20 @@ int combienDeJoueurs(){
 
 }
 
+void creerJoueurs(vector<Joueur>& lesJoueurs){
+	size_t i = 0;
+	string name;
+	Joueur joueur;
+	while(i < lesJoueurs.size()){
+		cout << "Nom du joueur " << i+1 << " : " ;
+		cin >> name;
+		joueur.setName(name);
+		lesJoueurs[i] = joueur;
+		cout << endl;
+		i++;
+	}
+}
+
 void creer_cartes(vector<Carte*>& Pile){
 	int val=1;
 	int fam = 0;
@@ -35,13 +49,27 @@ void creer_cartes(vector<Carte*>& Pile){
 	}
 }
 
-void afficher_pile(vector<Carte*> Pile){
+void distribuer_cartes(vector<Carte*>&Pile, vector<Joueur>& lesJoueurs){
+	int cpt = 0;
+	size_t joueur = 0;
+
+	while(cpt != 7){
+		while(joueur < lesJoueurs.size()){
+			lesJoueurs[joueur].piocher(Pile);
+			joueur++;
+		}
+		joueur = 0;
+		cpt++;
+	}
+}
+
+void afficher_vCartes(vector<Carte*> Pile){
 	for(size_t i = 0; i<Pile.size(); i++){
 		Pile[i]->affiche();
 	}
 } 
 
-void melanger_pile(vector<Carte*>& Pile){
+void melanger_cartes(vector<Carte*>& Pile){
 	srand(time(NULL));
 	Carte* p_temp = NULL;
 	int nrand = 0;
@@ -58,26 +86,25 @@ int main()
 	cout << "DUMBAL ETE 2018 - MARTINEZ AJANOHOUN" << endl << endl;
 
 	cout << "How many players do you want ? (entre 2 et 4)" << endl;
-	vector<Joueur> lesJoueurs(combienDeJoueurs());
+	int nb_joueurs = combienDeJoueurs();
+	vector<Joueur> lesJoueurs(nb_joueurs);
+	creerJoueurs(lesJoueurs);
 
 	vector<Carte*> Pile(52);
 	creer_cartes(Pile);
-	melanger_pile(Pile);
+	melanger_cartes(Pile);
 
-	Joueur Nestor("Nestor");
-	Joueur Jordy("Jordy");
-
-	int z = 0;
-	cout << endl;
-	while(z++ != 7){
-		Nestor.piocher(Pile);
-		Jordy.piocher(Pile);
+	distribuer_cartes(Pile, lesJoueurs);
+	for(size_t i = 0; i<lesJoueurs.size(); i++){
+		lesJoueurs[i].afficher_main();
+		cout << endl;
 	}
 
-	Nestor.afficher_main();
+	/*Nestor.afficher_main();
 	cout << endl;
-	Jordy.afficher_main();
-	//afficher_pile(Pile);
+	Jordy.afficher_main();*/
+	//afficher_vCartes(Pile);
+
 	while(Pile.size()!=0){
 		delete Pile[Pile.size()-1];
 		Pile.pop_back();
