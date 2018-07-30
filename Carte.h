@@ -10,14 +10,18 @@ class Carte
 	Carte(); //Constructeur
 	Carte(int val, int fam); //Constructeur surchargé avec valeur et famille
 	
-	int estRouge() const;//On met le constant que si la mehtode ne modifie pas l'objet
-	int estNoire() const;
-	int getVal() const;
-	int getFam() const;
-	void setVal(int val);
+	//On met le constant que si la mehtode ne modifie pas l'objet
+	int estRouge() const; //retourne 1 si carreau ou coeur
+	int estNoire() const; // inversement
+	int getVal() const; //retourne la valeur de la carte
+	int getFam() const; //retourne la famille de la carte
+	void setVal(int val); 
 	void setFam(int fam);
-	int estUneTete() const;
-	void affiche() const;
+	int estUneTete() const; //verifie si on est sur une tête
+	void affiche() const; //affiche le nom de la carte entier
+	int getPoints() const; //retourne le nombre de points réels d'une carte (poids dans une main)
+	int getUniqueSign() const;
+	int sameColor(Carte* autreCarte) const;
 	//TODO : si d'autres idées, completer...
 	
 	private:

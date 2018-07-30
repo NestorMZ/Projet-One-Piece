@@ -34,6 +34,15 @@ void creerJoueurs(vector<Joueur>& lesJoueurs){
 	}
 }
 
+int joueursAlive(vector<Joueur> lesJoueurs){
+	int resultat = 0;
+	for(size_t i = 0; i<lesJoueurs.size(); i++){
+		if(lesJoueurs[i].getPV() > 0)
+			resultat++;
+	}
+	return resultat;
+}
+
 void creer_cartes(vector<Carte*>& Pile){
 	int val=1;
 	int fam = 0;
@@ -81,6 +90,11 @@ void melanger_cartes(vector<Carte*>& Pile){
 	}
 }
 
+/*TOUR PAR TOUR
+C'est au tour de ...
+Affiche ses cartes
+Que voulez vous jouer ? Which cards do you want to play ?*/
+
 int main()
 {
 	cout << "DUMBAL ETE 2018 - MARTINEZ AJANOHOUN" << endl << endl;
@@ -94,16 +108,16 @@ int main()
 	creer_cartes(Pile);
 	melanger_cartes(Pile);
 
-	distribuer_cartes(Pile, lesJoueurs);
-	for(size_t i = 0; i<lesJoueurs.size(); i++){
-		lesJoueurs[i].afficher_main();
-		cout << endl;
-	}
+	vector<Carte*> Tas;
+	vector<Carte*> TasTemporaire;
 
-	/*Nestor.afficher_main();
-	cout << endl;
-	Jordy.afficher_main();*/
-	//afficher_vCartes(Pile);
+	distribuer_cartes(Pile, lesJoueurs);
+
+	afficher_vCartes(Pile);
+	cout << Pile[0]->sameColor(Pile[1]);
+	//int x = lesJoueurs[0].jouer(Pile, Tas, TasTemporaire);
+	//cout << x;
+
 
 	while(Pile.size()!=0){
 		delete Pile[Pile.size()-1];

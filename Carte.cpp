@@ -75,3 +75,18 @@ void Carte::affiche() const
 		tete = "Roi";
 	cout << tete << " de " << fam << endl;
 }
+
+int Carte::getPoints() const
+{
+	return (valeur<=10)?valeur:10;
+}
+
+int Carte::getUniqueSign() const
+{
+	return valeur+famille*13;
+}
+
+int Carte::sameColor(Carte* autreCarte) const
+{
+	return this->estRouge()==autreCarte->estRouge();
+}
