@@ -113,8 +113,9 @@ int main()
 
 	distribuer_cartes(Pile, lesJoueurs);
 
-	afficher_vCartes(Pile);
-	cout << Pile[0]->sameColor(Pile[1]);
+	//afficher_vCartes(Pile);
+	lesJoueurs[0].jouer(Pile, TasTemporaire, Tas);
+	//cout << Pile[0]->sameColor(Pile[1]);
 	//int x = lesJoueurs[0].jouer(Pile, Tas, TasTemporaire);
 	//cout << x;
 
